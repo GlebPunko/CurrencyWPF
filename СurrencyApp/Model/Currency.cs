@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NbrbAPI.Models
+namespace CurrencyApp.Model
 {
     public class Currency
     {
