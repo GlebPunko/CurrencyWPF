@@ -1,35 +1,14 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using NbrbAPI.Models;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows;
 
-public class MainViewModel : ViewModelBase
+namespace СurrencyApp.View
 {
-    public ObservableCollection<Rate> Currencies { get; set; }
-    private ApiService _apiService;
-    private FileService _fileService;
-
-    public ICommand LoadCurrenciesCommand { get; }
-
-    public MainViewModel()
+    public partial class MainWindow : Window
     {
-        _apiService = new ApiService();
-        _fileService = new FileService();
-        Currencies = new ObservableCollection<Rate>();
-        LoadCurrenciesCommand = new RelayCommand(LoadCurrencies);
-    }
-
-    private async void LoadCurrencies()
-    {
-        var currencies = await _apiService.GetCurrenciesAsync();
-
-        Currencies.Clear();
-
-        foreach (var currency in currencies)
+        public MainWindow()
         {
-            Currencies.Add(currency);
+            InitializeComponent();
+            //TODO Add DataContext in the future
+            //DataContext
         }
-        _fileService.SaveCurrenciesToFile(currencies);
     }
 }

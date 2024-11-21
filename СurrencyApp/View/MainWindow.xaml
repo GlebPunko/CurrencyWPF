@@ -1,19 +1,43 @@
-﻿<Window x:Class="CurrencyViewer.Views.MainWindow"
+﻿<Window x:Class="СurrencyApp.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:CurrencyViewer.Views"
-        Title="Currency Viewer" Height="350" Width="525">
-    <Grid>
-        <ListView ItemsSource="{Binding Currencies}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="100"/>
-                    <GridViewColumn Header="Abbreviation" DisplayMemberBinding="{Binding Abbreviation}" Width="100"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                    <GridViewColumn Header="Official Rate" DisplayMemberBinding="{Binding OfficialRate}" Width="100"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Load Currencies" Command="{Binding LoadCurrenciesCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:СurrencyApp.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="600">
+    
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="30"/>
+            <!-- Задаем высоту -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45a049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Margin" Value="10,0,10,10"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#f0f0f0" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="WPF приложения для работы с курсами валют, как они соотносятся с белорусским рублём." Margin="10, 0, 0, 30" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+            <Button Content="Date currency"  Style="{StaticResource ButtonStyle}" Margin="0,0,10,0" Command="{Binding OpenExchangeRateViewCommand}"/>
+            <Button Content="Кнопка 2" Style="{StaticResource ButtonStyle}" Margin="0,0,10,0"/>
+            <Button Content="Кнопка 3" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </Window>

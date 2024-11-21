@@ -1,0 +1,60 @@
+﻿<Window x:Class="СurrencyApp.View.TodayExchangeRateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:СurrencyApp.View"
+        mc:Ignorable="d"
+        Title="TodayExchangeRateWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="30"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45a049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#f0f0f0"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#ddd"/>
+            <Setter Property="Padding" Value="5,2"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Курс валют на 11-11-2023" HorizontalAlignment="Center" FontSize="16" Margin="10,10,10,0" FontWeight="Bold"/>
+
+        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding ExchangeRates}" Margin="10" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cur_Scale" Binding="{Binding Cur_Scale}" HeaderStyle="{StaticResource HeaderStyle}" />
+                <DataGridTextColumn Header="Cur_Name" Binding="{Binding Cur_Name}" HeaderStyle="{StaticResource HeaderStyle}"/>
+                <DataGridTextColumn Header="Cur_OfficialRate" Binding="{Binding Cur_OfficialRate}" HeaderStyle="{StaticResource HeaderStyle}"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#f9f9f9"/>
+            </DataGrid.Resources>
+        </DataGrid>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Выбрать дату" Margin="0,0,0,10" Style="{StaticResource ButtonStyle}" Command="{Binding ChooseDateCommand}" />
+            <Button Content="На главную страницу" Style="{StaticResource ButtonStyle}" Command="{Binding GoToMainCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
