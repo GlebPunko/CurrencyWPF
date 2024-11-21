@@ -90,38 +90,39 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IApiService.cs" />
     <Compile Include="Interfaces\IFileService.cs" />
-    <Compile Include="Model\SaveRate.cs" />
+    <Compile Include="Models\SaveRate.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\FileService.cs" />
-    <Compile Include="View\IntervalExchangeRateWindow.xaml.cs">
+    <Compile Include="Store\NavigationStore.cs" />
+    <Compile Include="Views\IntervalExchangeRateWindow.xaml.cs">
       <DependentUpon>IntervalExchangeRateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\TodayExchangeRateWindow.xaml.cs">
+    <Compile Include="Views\TodayExchangeRateWindow.xaml.cs">
       <DependentUpon>TodayExchangeRateWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\IntervalExchangeRateWindow.xaml">
+    <Page Include="Views\IntervalExchangeRateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TodayExchangeRateWindow.xaml">
+    <Page Include="Views\TodayExchangeRateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Currency.cs" />
-    <Compile Include="Model\Rates.cs" />
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Rates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,7 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\Commands\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
